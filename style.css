@@ -1,0 +1,29 @@
+h1{
+    padding: 100px;
+}
+.shadow{
+    box-shadow: 10px 5px 20px rgb(166, 134, 134);
+    border-radius: 20px;
+    padding: 100px ;
+    margin: 100px;
+}
+#email{
+    width: 100%;
+    margin:10px;
+}
+#email:focus{
+    background-color: aqua;
+}
+#pass:focus{
+    background-color: aqua;
+}
+#pass{
+    width: 100%;
+    margin: 10px;
+}
+.heading{
+    margin-right:970px;
+}
+#btn1{
+    margin-right: 990px;
+}
