@@ -1,49 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
+
 <body>
-    <div class="allclass">
-        <div class="login-area">
-            <h1 class="text-center">Welcome to pionneer Bank</h1>
-        </div>
+
+    <div id="login-area">
+        <h1 class="text-center">Welcome to pionneer Bank</h1>
+
         <div class="shadow text-center">
             <div class="submit-area">
                 <h3 class="heading">Log in</h3>
-                <input type="text" name="" id="email"placeholder="email"><br>
-                
-                 <input type="password" name="" id="pass" placeholder="password">
-                 <button type="submit"id="btn1" class="btn btn-success" >Enter</button>
-               
+                <input type="text" name="" id="email" placeholder="email" class="form-control" autocomplete="off"><br>
+
+                <input type="password" name="" id="pass" placeholder="password" class="form-control" autocomplete="off">
+                <button type="submit" id="btn1" class="btn btn-success">Enter</button>
+
             </div>
-           
+
         </div>
-        <div class="transaction-area">
-            <h1 class="text-center">Transaction-area</h1>
+
+    </div>
+
+    <div id="transaction-area">
+        <h1 class="text-center">Transaction area</h1>
+
+        <div class="row ">
+            <div class="col-md-4">
+                <div class="deposit status">
+                    <h5>Deposit</h5>
+                    <h2>$<span id="currentdeposit">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="withdraw status">
+                    <h5>Withdraw</h5>
+                    <h2>$ <span id="withdrawamount">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="balance status">
+                    <h5>Balance</h5>
+                    <h2>$<span id="currentbalance">500</span></h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 sta">
+
+              <div class="shadow">
+                <h2>Deposit</h2>
+                <input type="text" id="damount"class="form-control" placeholder="$ amount you want to deposit"><br>
+                <button type="submit" id="btn2" class="btn btn-success">Deposit</button>
+              </div>
+            </div>
+            <div class="col-md-6 ">
+
+              <div class="shadow">
+                <h2>Withdraw</h2>
+                <input type="text"  id="wamount"class="form-control" placeholder="$ amount you want to withdraw"><br>
+                <button type="submit" id="btn3" class="btn btn-success">withdraw</button>
+              </div>
+
+            </div>
+
         </div>
     </div>
-  <script>
-   
-   
-        $(document).ready(function(){
-            $("#btn1").click(function(){
-                $(".allclass").hide();
-                
-            },function(){
-                $(".transaction-area").show();
-            });
 
-            
-        });
-   
-  </script>
+
+    <script>
+     //login button handler
+        var f1 = document.getElementById("btn1");
+
+
+        f1.addEventListener("click", function () {
+            const f2 = document.getElementById("login-area");
+            f2.style.display = "none";
+
+
+            const f3 = document.getElementById("transaction-area");
+            f3.style.display = "block";
+
+        })
+
+        //deposit button handler
+
+        var depo= document.getElementById("btn2");
+        depo.addEventListener("click",function(){
+            var tran=document.getElementById("damount").value;
+            var tran1=parseFloat(tran);
+            var curdep=document.getElementById("currentdeposit").innerText;
+            var curdep1=parseFloat(curdep);
+            var final =tran1+curdep1;
+           document.getElementById("currentdeposit").innerHTML=final;
+           document.getElementById("damount").value="";
+
+           //balance calculate
+           var curbal=document.getElementById("currentbalance").innerText;
+           var curbal1=parseFloat(curbal);
+           var totalbalance=tran1+curbal1;
+           document.getElementById("currentbalance").innerHTML=totalbalance;
+        
+          
+        })
+        
+       
+         //withdraw after balance
+         var w=document.getElementById("btn3");
+          w.addEventListener("click",function(){
+            const withdraw= document.getElementById("wamount").value;
+           const withdrawno=parseFloat(withdraw);
+           var w1=document.getElementById("withdrawamount").innerText;
+           var w2=parseFloat(w1);
+           var totalw=withdrawno+w2;
+           document.getElementById("withdrawamount").innerHTML=totalw;
+           document.getElementById("wamount").value="";
+           var x =document.getElementById("currentbalance").innerText;
+           var x1=parseFloat(x);
+           var updatebalance= x1-withdrawno;
+           document.getElementById("currentbalance").innerHTML=updatebalance;
+        //    var total=totalbalance-withdrawno;
+        //    document.getElementById("currentbalance").innerHTML=total;
+          })
+
+
+
+    </script>
 
 </body>
+
 </html>

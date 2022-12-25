@@ -2,10 +2,11 @@ h1{
     padding: 100px;
 }
 .shadow{
-    box-shadow: 10px 5px 20px rgb(166, 134, 134);
+    box-shadow: 5px 5px 10px gray;
     border-radius: 20px;
     padding: 100px ;
     margin: 100px;
+    
 }
 #email{
     width: 100%;
@@ -26,4 +27,20 @@ h1{
 }
 #btn1{
     margin-right: 990px;
+}
+.deposit{
+    background-color: slateblue;
+}
+.withdraw{
+    background-color: lightsalmon;
+    
+}
+.balance{
+    background-color: orange;
+}
+.status{
+    color: white;
+    margin: 100px;
+    padding: 20px;
+    border-radius: 10px;
 }
